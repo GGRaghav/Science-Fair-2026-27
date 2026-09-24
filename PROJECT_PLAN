@@ -1,0 +1,14 @@
+# BACE1 In-Silico Drug Discovery
+
+Question: Can a multi-objective machine-learning framework identify BACE1 inhibitors with favorable predicted brain penetration and drug-like properties?
+
+Scientific Scope:
+
+- **Target:** BACE1 (beta-secretase 1).
+- **Primary activity source:** ChEMBL.
+- **Representations:** RDKit Morgan fingerprints (initially radius 2, 2048 bits) and a compact, justified set of physicochemical descriptors (for example MW, logP, TPSA, H-bond donors/acceptors, rotatable bonds, charge, ring counts, and fraction sp3).
+- **Models:** begin with Random Forest regression on Morgan fingerprints. Compare one justified tree/boosting model and a descriptor-based model. Do not add algorithms without a research reason
+- **Validation:** compare random and scaffold-held-out splits; use cross-validation within training data where suitable. Report RMSE, MAE, R², and correlation metrics where appropriate. Keep final test data out of fitting, feature selection, and iterative tuning. Group duplicate structures to prevent leakage.
+- **Later objectives:** if suitable public datasets and time permit, build separate BBB and explicitly defined toxicity models with their own documented endpoints and validation. Calculate relevant molecular properties. Treat drug-likeness as context, not proof of safety or efficacy.
+- **Prioritization:** compare activity-only selection with multi-objective ranking, preferably Pareto analysis. Do not use unexplained weights. Describe outputs as prioritized candidates
+- **Analysis:** assess similarity to known BACE1 compounds
